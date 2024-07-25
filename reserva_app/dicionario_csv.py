@@ -72,6 +72,31 @@ def obter_dicionario_por_linha_csv(linha: str) -> dict:
     return dic
         
         
+def obter_dicionario_por_numero_linha_csv(n: int, caminho_arquivo: str) -> dict:
+    """Obtém um dicionário com base em um arquivo dado e um número de linha
+
+    Args:
+        n (int): O índice da linha (começa em 0)
+        caminho_arquivo (str): O caminho relativo do arquivo
+
+    Raises:
+        ValueError: Se n for fora do alcance das linhas do arquivo
+
+    Returns:
+        dict: O dicionário na linha 'n' 
+    """
+    
+    with open(caminho_arquivo, "r") as arquivo:
+        i: int = 0
+        
+        for linha in arquivo:
+            if i == n: 
+                return obter_dicionario_por_linha_csv(linha)
+            
+            i += 1
+        
+        raise ValueError("O número da linha não é válido!")
+        
 if __name__ == "__main__":
     # salvar_dicionario_em_arquivo({
     #     "nome": "Davi Gomes",
@@ -79,4 +104,6 @@ if __name__ == "__main__":
     #     "apelidoss": "davi, david, gomes, mr. david"
     # }, "teste.csv")
     
-    print(obter_lista_dicionarios_em_csv("teste.csv"))
+    # print(obter_lista_dicionarios_em_csv("teste.csv"))
+    
+    print(obter_dicionario_por_numero_linha_csv(0, "teste.csv"))
