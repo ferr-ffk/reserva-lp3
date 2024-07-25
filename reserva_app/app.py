@@ -1,13 +1,14 @@
 from flask import render_template, app, Flask
-from dicionario_csv import obter_lista_dicionarios_em_csv
+from reserva_service import obter_reservas
+from sala_service import obter_salas
 
 app = Flask(__name__)
 
 # As reservas serão feitas e armazenadas na lista de reservas     
-reservas = obter_lista_dicionarios_em_csv("lista_reservas.csv")
+reservas = obter_reservas()
 
 # As salas serão cadastradas e armazenadas na lista de salas
-lista_salas = obter_lista_dicionarios_em_csv("lista_salas.csv")
+lista_salas = obter_salas()
 
 
 @app.route("/login")
