@@ -40,3 +40,10 @@ Aplicação de exemplo para aulas sobre desenvolvimento web backend e criação 
   - data e hora fim
   - ativa
   
+## Trajeto de funcionalidades
+
+- [X] Rotas para todas as páginas
+- [X] Uso de templates e layouts
+- [ ] Cadastrar sala e listar sala - arquivo csv
+- [ ] Reservar sala - arquivo csv
+- [ ] Cadastro usuário
