@@ -4,7 +4,7 @@ from dicionario_csv import obter_lista_dicionarios_em_arquivo
 app = Flask(__name__)
 
 # As reservas serão feitas e armazenadas na lista de reservas     
-reservas = obter_lista_dicionarios_em_arquivo("reservas.csv")
+reservas = obter_lista_dicionarios_em_arquivo("lista_reservas.csv")
 
 # As salas serão cadastradas e armazenadas na lista de salas
 lista_salas = obter_lista_dicionarios_em_arquivo("lista_salas.csv")
