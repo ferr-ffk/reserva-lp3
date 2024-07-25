@@ -22,7 +22,7 @@ def salvar_dicionario_em_arquivo(dic: dict, caminho_arquivo: str) -> None:
         arquivo.write(linha_produto)
         
         
-def obter_lista_dicionarios_em_arquivo(caminho_arquivo: str) -> list[dict]:
+def obter_lista_dicionarios_em_csv(caminho_arquivo: str) -> list[dict]:
     """Obtém a lista dos objetos de dicionário de um arquivo a partir de arquivo dado
 
     Args:
@@ -79,4 +79,4 @@ if __name__ == "__main__":
     #     "apelidoss": "davi, david, gomes, mr. david"
     # }, "teste.csv")
     
-    print(obter_lista_dicionarios_em_arquivo("teste.csv"))
+    print(obter_lista_dicionarios_em_csv("teste.csv"))
