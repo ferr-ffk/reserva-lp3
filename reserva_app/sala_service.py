@@ -6,7 +6,7 @@ from dicionario_csv import obter_lista_dicionarios_em_csv, obter_dicionario_por_
 
 ARQUIVO_LISTA_SALAS = "lista_salas.csv"
 
-def criar_salas(sala: dict) -> None:
+def criar_sala(sala: dict) -> None:
     pass
 
 
