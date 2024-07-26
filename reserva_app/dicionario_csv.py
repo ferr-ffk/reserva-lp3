@@ -61,6 +61,8 @@ def obter_dicionario_por_linha_csv(linha: str) -> dict:
         
         # Remove as aspas
         chave = chave_valor[0].replace('"', '')
+        
+        # Remove as aspas e substitui o ponto e vírgula para tratar como uma vírgula
         valor = chave_valor[1].replace('"', '').replace(';', ',')
         
         # Obtém a chave por meio da f string para que consiga inserir no comando
