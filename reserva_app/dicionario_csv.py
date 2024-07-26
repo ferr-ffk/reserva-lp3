@@ -12,6 +12,7 @@ def salvar_dicionario_em_arquivo(dic: dict, caminho_arquivo: str) -> None:
         for key in dic:
             value = dic[key]
             
+            # Verifica se o valor é uma string e subtitui vírgulas por ponto e vírgulas
             if type(value) == str:
                 value = value.replace(',', ';')
                 
