@@ -29,13 +29,8 @@ def criar_salas(codigo, capacidade, tipo, descricao: dict) -> None:
     salas = obter_salas()
 
     sala_dic = sala(codigo, capacidade, tipo, descricao)
-
-    chaves_dicionario = [key for key in salas]
-
-    # Verifica se uma reserva com esse código já foi criada
-    codigo_ja_existe = sala_dic['codigo'] in chaves_dicionario
     
-    if codigo_ja_existe:
+    if codigo_existe(codigo):
         raise ValueError("Uma sala com esse código já existe!")
 
     Dicionario_Csv.salvar_dicionario_em_arquivo(sala_dic, ARQUIVO_LISTA_SALAS)
@@ -55,3 +50,22 @@ def atualizar_sala(id: int, nova_sala: dict) -> None:
 
 def deletar_sala(id: int) -> None:
     Dicionario_Csv.excluir_linha_arquivo_por_padrao(f'id:{id}', ARQUIVO_LISTA_SALAS)
+
+
+def codigo_existe(codigo: str) -> bool:
+    """Checa se um código existe na lista de salas
+
+    Args:
+        codigo (str): O código, em formato de string. Se o valor não for passado como uma string não funciona
+
+    Returns:
+        bool: True se o código existe, False do contrário
+    """
+
+    salas = obter_salas()
+
+    for sala in salas:
+        if codigo == sala['codigo']:
+            return True
+
+    return False
