@@ -1,7 +1,15 @@
 from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
-
+def sala(codigo, capacidade, tipo, descricao):
+    sala = dict()
+    {
+        "codigo": codigo,
+        "capacidade":capacidade,
+        "ativa": True,
+        "tipo": tipo,
+        "descricao": descricao
+    }
 # -------------------------------------------------------
 
 ARQUIVO_LISTA_SALAS = "lista_salas.csv"
