@@ -1,7 +1,7 @@
 from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
-def sala(codigo, capacidade, tipo, descricao):
+def sala_modelo(codigo, capacidade, tipo, descricao):
     return {
         "codigo": codigo,
         "capacidade":capacidade,
@@ -26,12 +26,12 @@ def criar_salas(codigo, capacidade, tipo, descricao: dict) -> None:
         ValueError: Se já possui uma sala com o código fornecido
     """
 
-    sala_dic = sala(codigo, capacidade, tipo, descricao)
+    sala = sala_modelo(codigo, capacidade, tipo, descricao)
     
     if codigo_existe(codigo):
         raise ValueError("Uma sala com esse código já existe!")
 
-    Dicionario_Csv.salvar_dicionario_em_arquivo(sala_dic, ARQUIVO_LISTA_SALAS)
+    Dicionario_Csv.salvar_dicionario_em_arquivo(sala, ARQUIVO_LISTA_SALAS)
 
 
 def obter_salas() -> list[dict]:

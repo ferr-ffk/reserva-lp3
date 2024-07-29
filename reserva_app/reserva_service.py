@@ -1,7 +1,7 @@
 from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
-def reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
+def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
     return {
         "codigo": codigo,
         "usuario": usuario,
@@ -29,12 +29,12 @@ def criar_reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim) -> Non
         ValueError: Se uma reserva já possuir esse código
     """
 
-    reserva_dic = reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim)
+    reserva = reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim)
     
     if codigo_existe(codigo):
         raise ValueError("Uma reserva com esse código já existe!")
 
-    Dicionario_Csv.salvar_dicionario_em_arquivo(reserva_dic, ARQUIVO_LISTA_RESERVAS)
+    Dicionario_Csv.salvar_dicionario_em_arquivo(reserva, ARQUIVO_LISTA_RESERVAS)
 
 
 def obter_reservas() -> list[dict]:
