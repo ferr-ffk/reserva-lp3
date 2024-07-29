@@ -1,7 +1,16 @@
 from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
-
+def reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
+    reserva = dict()
+    {
+        "codigo": codigo,
+        "usuario": usuario,
+        "sala": sala,
+        "data e hora de inicio": data_hora_inicio,
+        "data e hora do fim": data_hora_fim,
+        "ativa": True
+    }
 # -------------------------------------------------------
 
 ARQUIVO_LISTA_RESERVAS = "lista_reservas.csv"
