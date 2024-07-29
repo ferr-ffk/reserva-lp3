@@ -1,4 +1,4 @@
-from dicionario_csv import obter_lista_dicionarios_em_csv, obter_dicionario_por_numero_linha_csv
+from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
 
@@ -11,11 +11,11 @@ def criar_reservas(reserva: dict) -> None:
 
 
 def obter_reservas() -> list[dict]:
-    return obter_lista_dicionarios_em_csv(ARQUIVO_LISTA_RESERVAS)
+    return Dicionario_Csv.obter_lista_dicionarios_em_csv(ARQUIVO_LISTA_RESERVAS)
 
 
 def obter_reserva(id: int) -> dict:
-    return obter_dicionario_por_numero_linha_csv(id, ARQUIVO_LISTA_RESERVAS)
+    return Dicionario_Csv.obter_dicionario_por_numero_linha_csv(id, ARQUIVO_LISTA_RESERVAS)
 
 
 def atualizar_reserva(id: int, nova_reserva: dict) -> None:
