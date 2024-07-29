@@ -63,6 +63,9 @@ def codigo_existe(codigo: str) -> bool:
         bool: True se o código existe, False do contrário
     """
 
+    # É necessário converter o código para se ter certeza que a comparação seja entre duas strings
+    codigo = str(codigo)
+
     reservas = obter_reservas()
 
     for reserva in reservas:

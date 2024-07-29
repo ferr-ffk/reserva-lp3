@@ -60,6 +60,9 @@ def codigo_existe(codigo: str) -> bool:
         bool: True se o código existe, False do contrário
     """
 
+    # É necessário converter o código para se ter certeza que a comparação seja entre duas strings
+    codigo = str(codigo)
+
     salas = obter_salas()
 
     for sala in salas:
