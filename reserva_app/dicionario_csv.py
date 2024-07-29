@@ -126,6 +126,13 @@ def excluir_linha_arquivo(n: int, caminho_arquivo: str) -> None:
 
 
 def excluir_linha_arquivo_por_padrao(padrao: str, caminho_arquivo: str) -> None:
+    """Exclui a linha de um arquivo por verificar se ela começa com o padrão fornecido
+
+    Args:
+        padrao (str): _description_
+        caminho_arquivo (str): _description_
+    """
+
     # Armazena as linhas previamente
     with open(caminho_arquivo, "r") as arquivo:
         linhas = arquivo.readlines()
@@ -133,13 +140,12 @@ def excluir_linha_arquivo_por_padrao(padrao: str, caminho_arquivo: str) -> None:
     with open(caminho_arquivo, "w") as arquivo:
         # A cada linha verifica se o número dela é igual ao parâmetro, se for, não adiciona no arquivo novamente
         for linha in linhas:
-            i = 0
-
             # Remove o caracter de nova linha e verifica se o padrão é o mesmo que o da linha
             if not linha.strip("\n").startswith(padrao):
                 arquivo.write(linha)
 
 if __name__ == "__main__":
+
     salvar_dicionario_em_arquivo({
         "nome": "Davi Gomes",
         "idade": 82741,
