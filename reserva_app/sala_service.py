@@ -2,8 +2,7 @@ from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
 def sala(codigo, capacidade, tipo, descricao):
-    sala = dict()
-    {
+    return {
         "codigo": codigo,
         "capacidade":capacidade,
         "ativa": True,
@@ -14,8 +13,32 @@ def sala(codigo, capacidade, tipo, descricao):
 
 ARQUIVO_LISTA_SALAS = "lista_salas.csv"
 
-def criar_salas(sala: dict) -> None:
-    pass
+def criar_salas(codigo, capacidade, tipo, descricao: dict) -> None:
+    """Armazena uma sala criada no arquivo .csv
+
+    Args:
+        codigo (int): O id de número inteiro
+        capacidade (int): A capacidade total da sala
+        tipo (str): O tipo por extenso
+        descricao (str): A descrição geral da sala
+
+    Raises:
+        ValueError: Se já possui uma sala com o código fornecido
+    """
+
+    salas = obter_salas()
+
+    sala_dic = sala(codigo, capacidade, tipo, descricao)
+
+    chaves_dicionario = [key for key in salas]
+
+    # Verifica se uma reserva com esse código já foi criada
+    codigo_ja_existe = sala_dic['codigo'] in chaves_dicionario
+    
+    if codigo_ja_existe:
+        raise ValueError("Uma sala com esse código já existe!")
+
+    Dicionario_Csv.salvar_dicionario_em_arquivo(sala_dic, ARQUIVO_LISTA_SALAS)
 
 
 def obter_salas() -> list[dict]:
