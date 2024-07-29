@@ -16,7 +16,7 @@ class Dicionario_Csv:
                 if type(value) == str:
                     value = value.replace(',', ';')
                     
-                lista_valores.append(f'"{key}:{value}"')
+                lista_valores.append(fr'"{key}:{value}"')
                 
             linha_produto = ','.join(lista_valores) + '\n'
             
@@ -63,6 +63,9 @@ class Dicionario_Csv:
             # Remove as aspas
             chave = chave_valor[0].replace('"', '')
             valor = chave_valor[1].replace('"', '').replace(';', ',')
+            
+            chave = chave.replace("\'", "")
+            valor = valor.replace("\'", "")
             
             # Obtém a chave por meio da f string para que consiga inserir no comando
             comando = f"dic.update({chave}='{valor}')"
