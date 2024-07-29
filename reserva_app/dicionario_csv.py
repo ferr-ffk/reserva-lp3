@@ -97,13 +97,80 @@ def obter_dicionario_por_numero_linha_csv(n: int, caminho_arquivo: str) -> dict:
         
         raise ValueError("O número da linha não é válido!")
         
+
+def excluir_linha_arquivo(n: int, caminho_arquivo: str) -> None:
+    """Exclui uma linha de um arquivo qualquer
+
+    Args:
+        n (int): O índice da linha (começa em zero)
+        caminho_arquivo (str): A string do caminho relativo do arquivo
+    """
+    linhas: list[str] = []
+
+    # Armazena as linhas previamente
+    with open(caminho_arquivo, "r") as arquivo:
+        linhas = arquivo.readlines()
+    
+    with open(caminho_arquivo, "w") as arquivo:
+        # A cada linha verifica se o número dela é igual ao parâmetro, se for, não adiciona no arquivo novamente
+        i = 0
+
+        for linha in linhas:
+
+            if i == n:
+                i += 1
+                continue
+
+            i += 1
+            arquivo.write(linha)
+
+
+def excluir_linha_arquivo_por_padrao(padrao: str, caminho_arquivo: str) -> None:
+    # Armazena as linhas previamente
+    with open(caminho_arquivo, "r") as arquivo:
+        linhas = arquivo.readlines()
+    
+    with open(caminho_arquivo, "w") as arquivo:
+        # A cada linha verifica se o número dela é igual ao parâmetro, se for, não adiciona no arquivo novamente
+        for linha in linhas:
+            i = 0
+
+            # Remove o caracter de nova linha e verifica se o padrão é o mesmo que o da linha
+            if not linha.strip("\n").startswith(padrao):
+                arquivo.write(linha)
+
 if __name__ == "__main__":
+    salvar_dicionario_em_arquivo({
+        "nome": "Davi Gomes",
+        "idade": 82741,
+        "apelidoss": "davi, david, gomes, mr. david"
+    }, "teste.csv")
+
     # salvar_dicionario_em_arquivo({
-    #     "nome": "Davi Gomes",
-    #     "idade": 82741,
-    #     "apelidoss": "davi, david, gomes, mr. david"
+    #     "nome": "Mister",
+    #     "idade": 198284,
+    #     "apelidoss": "mister, master"
+    # }, "teste.csv")
+
+    # salvar_dicionario_em_arquivo({
+    #     "nome": "Fernando",
+    #     "idade": 19825,
+    #     "apelidoss": "sei lá"
+    # }, "teste.csv")
+
+    # salvar_dicionario_em_arquivo({
+    #     "nome": "Leonardo",
+    #     "idade": 294836,
+    #     "apelidoss": "leleo, leo"
     # }, "teste.csv")
     
-    # print(obter_lista_dicionarios_em_csv("teste.csv"))
+    print(obter_lista_dicionarios_em_csv("teste.csv"))
     
-    print(obter_dicionario_por_numero_linha_csv(0, "teste.csv"))
+    # print(obter_dicionario_por_numero_linha_csv(0, "teste.csv"))
+
+    # excluir_linha_arquivo(0, "teste.csv")
+
+    # excluir_linha_arquivo_por_padrao("\"nome:Davi Gomes\"", "teste.csv")
+
+    print(obter_lista_dicionarios_em_csv("teste.csv"))
+
