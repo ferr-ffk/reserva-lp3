@@ -13,7 +13,7 @@ def sala_modelo(codigo, capacidade, tipo, descricao):
 
 ARQUIVO_LISTA_SALAS = "lista_salas.csv"
 
-def criar_salas(codigo, capacidade, tipo, descricao: dict) -> None:
+def criar_sala(codigo, capacidade, tipo, descricao: dict) -> None:
     """Armazena uma sala criada no arquivo .csv
 
     Args:
