@@ -34,7 +34,7 @@ def obter_reservas() -> list[dict]:
 
 
 def obter_reserva(id: int) -> dict:
-    return Dicionario_Csv.obter_dicionario_por_numero_linha_csv(id, ARQUIVO_LISTA_RESERVAS)
+    return Dicionario_Csv.obter_dicionario_por_padrao(f'id:{id}', ARQUIVO_LISTA_RESERVAS)
 
 
 def atualizar_reserva(id: int, nova_reserva: dict) -> None:
