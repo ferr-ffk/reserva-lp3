@@ -29,8 +29,6 @@ def criar_reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim) -> Non
         ValueError: Se uma reserva já possuir esse código
     """
 
-    reservas = obter_reservas()
-
     reserva_dic = reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim)
     
     if codigo_existe(codigo):

@@ -26,8 +26,6 @@ def criar_salas(codigo, capacidade, tipo, descricao: dict) -> None:
         ValueError: Se já possui uma sala com o código fornecido
     """
 
-    salas = obter_salas()
-
     sala_dic = sala(codigo, capacidade, tipo, descricao)
     
     if codigo_existe(codigo):
