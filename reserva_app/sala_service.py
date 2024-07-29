@@ -23,4 +23,4 @@ def atualizar_sala(id: int, nova_sala: dict) -> None:
 
 
 def deletar_sala(id: int) -> None:
-    pass
+    Dicionario_Csv.excluir_linha_arquivo_por_padrao(f'id:{id}', ARQUIVO_LISTA_SALAS)

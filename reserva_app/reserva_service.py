@@ -23,4 +23,4 @@ def atualizar_reserva(id: int, nova_reserva: dict) -> None:
 
 
 def deletar_reserva(id: int) -> None:
-    pass
+    Dicionario_Csv.excluir_linha_arquivo_por_padrao(f'id:{id}', ARQUIVO_LISTA_RESERVAS)
