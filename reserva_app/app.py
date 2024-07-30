@@ -31,12 +31,12 @@ def pagina_cadastro() -> None:
 
 @app.route("/reservas")
 def pagina_reservas() -> None:
-    return render_template("reservas.html", reservas=reservas)
+    return render_template("reservas.html", reservas=obter_reservas())
 
 
 @app.route("/reservar-sala")
 def pagina_reservar_sala() -> None:
-    return render_template("reservar-sala.html", salas=salas, reservas=reservas)
+    return render_template("reservar-sala.html", salas=obter_salas(), reservas=obter_reservas())
 
 
 @app.route("/reservar-sala", methods=['post'])
@@ -65,7 +65,7 @@ def pagina_cadastrar_sala_post() -> None:
 
 @app.route("/")
 def pagina_principal():
-    return render_template("listar-salas.html", salas=salas)
+    return render_template("listar-salas.html", salas=obter_salas())
 
 
 numero = 1209517
