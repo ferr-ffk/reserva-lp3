@@ -1,6 +1,6 @@
-from flask import render_template, app, Flask
-from reserva_service import obter_reservas
-from sala_service import obter_salas
+from flask import render_template, app, Flask, request, url_for, redirect
+from reserva_service import *
+from sala_service import *
 
 app = Flask(__name__)
 
@@ -39,6 +39,23 @@ def pagina_detalhe_reserva() -> None:
 @app.route("/cadastrar-sala")
 def pagina_cadastrar_sala() -> None:
     return render_template("cadastrar-sala.html")
+
+
+@app.route("/cadastrar-sala", methods=['post'])
+def pagina_cadastrar_sala_post() -> None:
+    tipo = ''
+    
+    match request.form['tipo']:
+        case 1:
+            tipo = 'Laboratario de Informatica'
+        case 2:
+            tipo = 'Laboratorio de Quimica'
+        case 3:
+            tipo = 'Sala de Aula'
+    
+    criar_sala(criar_codigo_sala(), request.form['capacidade'], tipo, request.form['descricao'])
+    
+    return redirect(url_for("pagina_principal"))
 
 
 @app.route("/")
