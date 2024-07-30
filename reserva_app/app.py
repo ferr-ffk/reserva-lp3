@@ -46,14 +46,19 @@ def pagina_reservar_sala_post() -> None:
     return redirect(url_for("pagina_reservas"))
 
 
-@app.route("/detalhe-reserva")
-def pagina_detalhe_reserva() -> None:
-    return render_template("reserva/detalhe-reserva.html", reserva="reserva")
+@app.route("/detalhe-reserva/<id>")
+def pagina_detalhe_reserva(id) -> None:
+    return render_template("reserva/detalhe-reserva.html", reserva=obter_reserva(id))
 
 
 @app.route("/cadastrar-sala")
 def pagina_cadastrar_sala() -> None:
     return render_template("cadastrar-sala.html")
+
+
+@app.route("/cadastrar-sala/<id>")
+def pagina_cadastrar_sala_detalhe(id) -> None:
+    return render_template("cadastrar-sala.html", sala=obter_sala(id))
 
 
 @app.route("/cadastrar-sala", methods=['post'])
