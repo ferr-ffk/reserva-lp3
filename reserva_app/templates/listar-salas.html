@@ -25,12 +25,21 @@
             </tr>
           </thead>
           <tbody>
+            {% for sala in salas %}
             <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
+              <td>{{ sala.codigo }}</td>
+              <td>{{ sala.tipo }}</td>
+              <td>{{ sala.descricao }}</td>
+              <td>{{ sala.capacidade }}</td>
+              {% if sala.ativa == "True" %}
+                <td>
+                  Ativa
+                </td>
+              {% else %}
+                <td>
+                  Desativada
+                </td>
+              {% endif %}
               <td>
                 <form action="">
                   <button class="btn btn-sm btn-dark" type="submit" formaction="/cadastrar-sala">Editar</button>
@@ -39,78 +48,7 @@
                 </form>
               </td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
-              <td>
-                <form action="">
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/cadastrar-sala">Editar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/reservas">Desativar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/reservas">Excluir</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
-              <td>
-                <form action="">
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/cadastrar-sala.html">Editar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Desativar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Excluir</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
-              <td>
-                <form action="">
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/cadastrar-sala.html">Editar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Desativar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Excluir</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
-              <td>
-                <form action="">
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/cadastrar-sala.html">Editar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Desativar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Excluir</button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Laboratório</td>
-              <td>PCs com intel i5, 8GB de RAM</td>
-              <td>20</td>
-              <td>Sim</td>
-              <td>
-                <form action="">
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/cadastrar-sala.html">Editar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Desativar</button>
-                  <button class="btn btn-sm btn-dark" type="submit" formaction="/templates/reservas.html">Excluir</button>
-                </form>
-              </td>
-            </tr>
-            
-            
+            {% endfor %}
           </tbody>
         </table>
       </div>

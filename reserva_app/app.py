@@ -8,7 +8,7 @@ app = Flask(__name__)
 reservas = obter_reservas()
 
 # As salas serão cadastradas e armazenadas na lista de salas
-lista_salas = obter_salas()
+salas = obter_salas()
 
 
 @app.route("/login")
@@ -43,7 +43,7 @@ def pagina_cadastrar_sala() -> None:
 
 @app.route("/")
 def pagina_principal():
-    return render_template("listar-salas.html", lista_salas=lista_salas)
+    return render_template("listar-salas.html", salas=salas)
 
 
 numero = 1209517
