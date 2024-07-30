@@ -28,7 +28,14 @@ def pagina_reservas() -> None:
 
 @app.route("/reservar-sala")
 def pagina_reservar_sala() -> None:
-    return render_template("reservar-sala.html")
+    return render_template("reservar-sala.html", salas=salas, reservas=reservas)
+
+
+@app.route("/reservar-sala", methods=['post'])
+def pagina_reservar_sala_post() -> None:
+    criar_reserva(criar_codigo_sala(), 'usuário padrão', request.form['sala'], request.form['data_e_hora_de_inicio'], request.form['data_e_hora_do_fim'])
+
+    return redirect(url_for("pagina_reservas"))
 
 
 @app.route("/detalhe-reserva")
@@ -53,7 +60,7 @@ def pagina_cadastrar_sala_post() -> None:
         case 3:
             tipo = 'Sala de Aula'
     
-    criar_sala(criar_codigo_sala(), request.form['capacidade'], tipo, request.form['descricao'])
+    criar_sala(request.form['codigo'], request.form['capacidade'], tipo, request.form['descricao'])
     
     return redirect(url_for("pagina_principal"))
 

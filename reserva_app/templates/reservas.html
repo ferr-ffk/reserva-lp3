@@ -21,6 +21,32 @@
       <button class="btn btn-dark" type="submit">Filtrar</button>
     </div>
   </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sala</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Data e hora de início</th>
+        <th scope="col">Data e hora do fim</th>
+      </tr>
+    </thead>
+    {% for reserva in reservas %}
+      <tr>
+        <td>
+          {{ reserva.sala }}
+        </span>
+        <td>
+          {{ reserva.usuario }}
+        </td>
+        <td>
+          {{ reserva.data_e_hora_de_inicio }}
+        </td>
+        <td>
+          {{ reserva.data_e_hora_do_fim }}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
 </div>
 
 {% endblock %}
