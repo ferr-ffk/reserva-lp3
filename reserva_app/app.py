@@ -1,6 +1,7 @@
 from flask import render_template, app, Flask, request, url_for, redirect
 from reserva_service import *
 from sala_service import *
+from usuario_service import *
 
 app = Flask(__name__)
 
@@ -14,6 +15,13 @@ salas = obter_salas()
 @app.route("/login")
 def pagina_login() -> None:
     return render_template("login.html")
+
+
+@app.route("/login", methods=['post'])
+def pagina_login_post() -> None:
+    criar_usuario(request.form['nome'], request.form['email'], request.form['senha'])
+
+    return redirect(url_for("pagina_principal"))
 
 
 @app.route("/cadastro")
