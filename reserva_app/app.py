@@ -50,17 +50,7 @@ def pagina_cadastrar_sala() -> None:
 
 @app.route("/cadastrar-sala", methods=['post'])
 def pagina_cadastrar_sala_post() -> None:
-    tipo = ''
-    
-    match request.form['tipo']:
-        case 1:
-            tipo = 'Laboratario de Informatica'
-        case 2:
-            tipo = 'Laboratorio de Quimica'
-        case 3:
-            tipo = 'Sala de Aula'
-    
-    criar_sala(request.form['codigo'], request.form['capacidade'], tipo, request.form['descricao'])
+    criar_sala(request.form['codigo'], request.form['capacidade'], request.form['tipo'], request.form['descricao'])
     
     return redirect(url_for("pagina_principal"))
 

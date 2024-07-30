@@ -28,10 +28,18 @@
             {% for sala in salas %}
             <tr>
               <td>{{ sala.codigo }}</td>
-              <td>{{ sala.tipo }}</td>
+              {% if sala['tipo'] == "1" %}
+                <td>Laboratório de Informática</td>
+              {% elif sala['tipo'] == "2" %}
+                <td>Laboratório de Química</td>
+              {% elif sala['tipo'] == "3" %}
+                <td>Sala de Aula</td>
+              {% else %}
+                <td>Sem especificação</td>
+              {% endif %}
               <td>{{ sala.descricao }}</td>
               <td>{{ sala.capacidade }}</td>
-              {% if sala.ativa == "True" %}
+              {% if sala['ativa'] == "True" %}
                 <td>
                   Ativa
                 </td>
