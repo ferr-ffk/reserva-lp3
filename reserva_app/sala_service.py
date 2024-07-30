@@ -1,3 +1,4 @@
+from random import randint
 from dicionario_csv import Dicionario_Csv
 
 # Objeto padrão
@@ -70,3 +71,13 @@ def codigo_existe(codigo: str) -> bool:
             return True
 
     return False
+
+
+def criar_codigo_sala() -> str:
+    """Gera um código de sala aleatório
+
+    Returns:
+        str: A string do código, sendo ele um número aleatório entre 0 e 10000
+    """
+    
+    return randint(0, 10000)
