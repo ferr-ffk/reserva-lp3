@@ -46,4 +46,4 @@ Aplicação de exemplo para aulas sobre desenvolvimento web backend e criação 
 - [X] Uso de templates e layouts
 - [X] Cadastrar sala e listar sala - arquivo csv
 - [X] Reservar sala - arquivo csv
-- [ ] Cadastro usuário
+- [X] Cadastro usuário
