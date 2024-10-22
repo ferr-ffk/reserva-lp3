@@ -1,7 +1,7 @@
 from flask import render_template, app, Flask, request, url_for, redirect
-from reserva_service import *
-from sala_service import *
-from usuario_service import *
+from service.reserva_service import *
+from service.sala_service import *
+from service.usuario_service import *
 
 app = Flask(__name__)
 
