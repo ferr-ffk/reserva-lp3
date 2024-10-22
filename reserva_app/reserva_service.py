@@ -1,4 +1,7 @@
-from dicionario_csv import Dicionario_Csv
+from datetime import datetime
+from banco.banco import abrir_conexao, fechar_conexao
+from banco.mysql_utils import executar_sql
+from datetime_utils import *
 
 # Objeto padrão
 def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
@@ -15,30 +18,39 @@ def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
 
 ARQUIVO_LISTA_RESERVAS = "lista_reservas.csv"
 
-def criar_reserva(codigo, usuario, sala, data_hora_inicio, data_hora_fim) -> None:
+def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> None:
     """Cria uma reserva e armazena no arquivo .csv
 
     Args:
-        codigo (int): O código da sala em um número inteiro
-        usuario (str): O nome do usuário responsável pela reserva
-        sala (int): O código da sala
+        usuario (str): O id do usuário responsável pela reserva
+        codigo_sala (int): O código da sala
         data_hora_inicio (str): O horário de início da reserva
         data_hora_fim (str): O horário de término da reserva
 
     Raises:
         ValueError: Se uma reserva já possuir esse código
     """
-
-    reserva = reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim)
     
-    if codigo_existe(codigo):
-        raise ValueError("Uma reserva com esse código já existe!")
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
 
-    Dicionario_Csv.salvar_dicionario_em_arquivo(reserva, ARQUIVO_LISTA_RESERVAS)
+    data_inicio_format = converter_datetime_str_mysl(data_hora_inicio)
+    data_fim_format = converter_datetime_str_mysl(data_hora_fim)
+
+    sql = f"INSERT INTO `reserva` (`id_usuario`, `codigo_sala`, `data_hora_inicio`, `data_hora_fim`) VALUES (\"{id_usuario}\", \"{codigo_sala}\", \"{data_inicio_format}\", \"{data_fim_format}\")"
+
+    executar_sql(conexao, sql)
+
+    fechar_conexao(conexao)
 
 
 def obter_reservas() -> list[dict]:
-    return Dicionario_Csv.obter_lista_dicionarios_em_csv(ARQUIVO_LISTA_RESERVAS)
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+
+    resultado = executar_sql(conexao, "SELECT * FROM reserva")
+
+    fechar_conexao(conexao)
+
+    return resultado
 
 
 def obter_reserva(id: int) -> dict:
@@ -73,3 +85,12 @@ def codigo_existe(codigo: str) -> bool:
             return True
 
     return False
+
+if __name__ == "__main__":
+    agora = datetime.datetime.now()
+
+    # criar_reserva(1, 1, agora, agora)
+
+    reservas = obter_reservas()
+
+    print(reservas)
