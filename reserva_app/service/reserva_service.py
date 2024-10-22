@@ -54,7 +54,7 @@ def obter_reservas() -> list[dict]:
 
 
 def obter_reserva(id: int) -> dict:
-    return Dicionario_Csv.obter_dicionario_por_padrao(f'id:{id}', ARQUIVO_LISTA_RESERVAS)
+    pass
 
 
 def atualizar_reserva(id: int, nova_reserva: dict) -> None:
@@ -62,7 +62,7 @@ def atualizar_reserva(id: int, nova_reserva: dict) -> None:
 
 
 def deletar_reserva(id: int) -> None:
-    Dicionario_Csv.excluir_linha_arquivo_por_padrao(f'id:{id}', ARQUIVO_LISTA_RESERVAS)
+    pass
 
 
 def codigo_existe(codigo: str) -> bool:
