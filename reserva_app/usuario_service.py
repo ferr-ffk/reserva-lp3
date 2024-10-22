@@ -20,6 +20,8 @@ def criar_usuario(nome: str, email: str, senha: str, admin: bool) -> None:
 
     executar_sql(conexao, sql)
 
+    fechar_conexao(conexao)
+
 
 def obter_usuarios() -> list[dict]:
     """Lista os usuários cadastrados no banco
