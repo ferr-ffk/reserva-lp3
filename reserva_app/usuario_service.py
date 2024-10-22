@@ -1,4 +1,5 @@
-from dicionario_csv import Dicionario_Csv
+from banco.banco import abrir_conexao, fechar_conexao
+from banco.mysql_utils import executar_sql
 
 def usuario_modelo(nome, email, senha):
     return {
@@ -10,11 +11,39 @@ def usuario_modelo(nome, email, senha):
 
 CAMINHO_ARQUIVO_USUARIOS = "lista_usuarios.csv"
 
-def criar_usuario(nome, email, senha) -> None:
-    usuario = usuario_modelo(nome, email, senha)
+def criar_usuario(nome: str, email: str, senha: str, admin: bool) -> None:
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
 
-    Dicionario_Csv.salvar_dicionario_em_arquivo(usuario, CAMINHO_ARQUIVO_USUARIOS)
+    admin = str(admin).lower()
+
+    sql = f"INSERT INTO `usuario` (`nome`, `email`, `senha`, `admin`) VALUES (\"{nome}\", \"{email}\", \"{senha}\", {admin})"
+
+    executar_sql(conexao, sql)
 
 
 def obter_usuarios() -> list[dict]:
-    return Dicionario_Csv.obter_lista_dicionarios_em_csv(CAMINHO_ARQUIVO_USUARIOS)
+    """Lista os usuários cadastrados no banco
+
+    Args:
+        conexao (MySQLConnection): _description_
+
+    Returns:
+        list: _description_
+    """
+
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+
+    resultado = executar_sql(conexao, "SELECT * FROM usuario")
+
+    fechar_conexao(conexao)
+
+    return resultado
+
+
+if __name__ == "__main__":
+    criar_usuario("Fernando", "freitas@gmail", "123456", True)
+
+    usuarios = obter_usuarios()
+
+    for usuario in usuarios:
+        print(usuario)
