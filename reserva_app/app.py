@@ -73,13 +73,6 @@ def pagina_principal():
     return render_template("listar-salas.html", salas=obter_salas())
 
 
-numero = 1209517
-
-@app.route("/teste")
-def teste():
-    return render_template("teste.html", num=numero)
-
-
 if __name__ == "__main__":
     # Define que a aplicação rodará no modo debug, para que não seja necessário reinicar o servidor toda vez que uma mudança for feita
     app.debug = True
