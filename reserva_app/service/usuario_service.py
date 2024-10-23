@@ -11,7 +11,7 @@ def usuario_modelo(nome, email, senha):
 
 CAMINHO_ARQUIVO_USUARIOS = "lista_usuarios.csv"
 
-def criar_usuario(nome: str, email: str, senha: str, admin: bool) -> None:
+def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> None:
     conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
 
     admin = str(admin).lower()
