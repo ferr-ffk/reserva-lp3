@@ -12,8 +12,6 @@ def sala_modelo(codigo, capacidade, tipo, descricao):
     }
 # -------------------------------------------------------
 
-ARQUIVO_LISTA_SALAS = "lista_salas.csv"
-
 def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
     """Armazena uma sala criada no arquivo .csv
 
@@ -48,7 +46,7 @@ def obter_salas() -> list:
 
 
 def obter_sala(id: int) -> dict:
-    return Dicionario_Csv.obter_dicionario_por_numero_linha_csv(id, ARQUIVO_LISTA_SALAS)
+    pass
 
 
 def atualizar_sala(id: int, nova_sala: dict) -> None:
@@ -56,7 +54,7 @@ def atualizar_sala(id: int, nova_sala: dict) -> None:
 
 
 def deletar_sala(id: int) -> None:
-    Dicionario_Csv.excluir_linha_arquivo_por_padrao(f'id:{id}', ARQUIVO_LISTA_SALAS)
+    pass
 
 
 def codigo_existe(codigo: str) -> bool:
@@ -79,13 +77,3 @@ def codigo_existe(codigo: str) -> bool:
             return True
 
     return False
-
-
-def criar_codigo_sala() -> str:
-    """Gera um código de sala aleatório
-
-    Returns:
-        str: A string do código, sendo ele um número aleatório entre 0 e 10000
-    """
-    
-    return randint(0, 10000)

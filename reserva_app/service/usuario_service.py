@@ -9,8 +9,6 @@ def usuario_modelo(nome, email, senha):
         "admin": False
     }
 
-CAMINHO_ARQUIVO_USUARIOS = "lista_usuarios.csv"
-
 def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> None:
     """Cria um usuário a partir das informações fornecidas
 
