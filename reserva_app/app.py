@@ -21,7 +21,7 @@ def pagina_login() -> None:
 def pagina_login_post() -> None:
     criar_usuario(request.form['nome'], request.form['email'], request.form['senha'])
 
-    return redirect(url_for("pagina_principal"))
+    return redirect(url_for(pagina_principal.__name__))
 
 
 @app.route("/cadastro")
@@ -43,7 +43,7 @@ def pagina_reservar_sala() -> None:
 def pagina_reservar_sala_post() -> None:
     criar_reserva(1, request.form['sala'], request.form['data_e_hora_de_inicio'], request.form['data_e_hora_do_fim'])
 
-    return redirect(url_for("pagina_reservas"))
+    return redirect(url_for(pagina_reservas.__name__))
 
 
 @app.route("/detalhe-reserva/<id>")
@@ -65,7 +65,7 @@ def pagina_cadastrar_sala_detalhe(id) -> None:
 def pagina_cadastrar_sala_post() -> None:
     criar_sala(request.form['codigo'], request.form['capacidade'], request.form['tipo'], request.form['descricao'])
     
-    return redirect(url_for("pagina_principal"))
+    return redirect(url_for(pagina_principal.__name__))
 
 
 @app.route("/")
