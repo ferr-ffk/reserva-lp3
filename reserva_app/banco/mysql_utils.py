@@ -1,8 +1,9 @@
+from typing import Optional
 from mysql.connector import *
 from banco import *
 
 
-def executar_sql(conexao: MySQLConnection, sql: str) -> None:
+def executar_sql(conexao: MySQLConnection, sql: str) -> Optional[list]:
     """Executa um sql em uma conexão estabelecida.
 
     Args:

@@ -12,6 +12,15 @@ def usuario_modelo(nome, email, senha):
 CAMINHO_ARQUIVO_USUARIOS = "lista_usuarios.csv"
 
 def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> None:
+    """Cria um usuário a partir das informações fornecidas
+
+    Args:
+        nome (str): O nome do usuário
+        email (str): O email (único) do usuário
+        senha (str): A senha do usuário
+        admin (bool, optional): Se o usuário possui capacidades de administrador. Defaults to False.
+    """
+
     conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
 
     admin = str(admin).lower()
@@ -26,11 +35,8 @@ def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> Non
 def obter_usuarios() -> list[dict]:
     """Lista os usuários cadastrados no banco
 
-    Args:
-        conexao (MySQLConnection): _description_
-
     Returns:
-        list: _description_
+        list: A lista de usuários cadastrados
     """
 
     conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
