@@ -10,7 +10,7 @@ def usuario_modelo(nome, email, senha):
     }
 
 def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> None:
-    """Cria um usuário a partir das informações fornecidas
+    """Armazena um usuário no banco de dados
 
     Args:
         nome (str): O nome do usuário

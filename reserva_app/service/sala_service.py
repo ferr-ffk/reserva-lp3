@@ -13,7 +13,7 @@ def sala_modelo(codigo, capacidade, tipo, descricao):
 # -------------------------------------------------------
 
 def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
-    """Armazena uma sala criada no arquivo .csv
+    """Persiste uma sala no banco de dados
 
     Args:
         codigo (int): O id de número inteiro

@@ -17,7 +17,7 @@ def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
 # -------------------------------------------------------
 
 def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> None:
-    """Cria uma reserva e armazena no arquivo .csv
+    """Persiste uma reserva no banco de dados
 
     Args:
         usuario (str): O id do usuário responsável pela reserva
