@@ -1,7 +1,7 @@
 from datetime import datetime
 from banco.banco import abrir_conexao, fechar_conexao
-from banco.mysql_utils import executar_sql
-from datetime_utils import *
+from utils.mysql_utils import executar_sql
+from utils.datetime_utils import *
 
 # Objeto padrão
 def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):

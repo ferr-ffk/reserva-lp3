@@ -1,5 +1,5 @@
 from banco.banco import abrir_conexao, fechar_conexao
-from banco.mysql_utils import executar_sql
+from utils.mysql_utils import executar_sql
 
 def usuario_modelo(nome, email, senha):
     return {
