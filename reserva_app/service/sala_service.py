@@ -1,5 +1,5 @@
-from random import randint
-from dicionario_csv import Dicionario_Csv
+from banco.banco import abrir_conexao, fechar_conexao
+from banco.mysql_utils import executar_sql
 
 # Objeto padrão
 def sala_modelo(codigo, capacidade, tipo, descricao):
@@ -14,7 +14,7 @@ def sala_modelo(codigo, capacidade, tipo, descricao):
 
 ARQUIVO_LISTA_SALAS = "lista_salas.csv"
 
-def criar_sala(codigo, capacidade, tipo, descricao: dict) -> None:
+def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
     """Armazena uma sala criada no arquivo .csv
 
     Args:
@@ -22,21 +22,29 @@ def criar_sala(codigo, capacidade, tipo, descricao: dict) -> None:
         capacidade (int): A capacidade total da sala
         tipo (str): O tipo por extenso
         descricao (str): A descrição geral da sala
-
-    Raises:
-        ValueError: Se já possui uma sala com o código fornecido
     """
 
-    sala = sala_modelo(codigo, capacidade, tipo, descricao)
-    
-    if codigo_existe(codigo):
-        raise ValueError("Uma sala com esse código já existe!")
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
 
-    Dicionario_Csv.salvar_dicionario_em_arquivo(sala, ARQUIVO_LISTA_SALAS)
+    sql = f"INSERT INTO `sala` (`codigo`, `capacidade`, `tipo`, `descricao`) VALUES (\"{codigo}\", {capacidade}, \"{tipo}\", {descricao})"
+
+    executar_sql(conexao, sql)
+
+    fechar_conexao(conexao)
 
 
-def obter_salas() -> list[dict]:
-    return Dicionario_Csv.obter_lista_dicionarios_em_csv(ARQUIVO_LISTA_SALAS)
+def obter_salas() -> list:
+    """Obtém todas as salas persistidas
+
+    Returns:
+        list: A lista de todas as salas
+    """
+
+    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+
+    sql = f"SELECT * FROM `sala`"
+
+    return executar_sql(conexao, sql)
 
 
 def obter_sala(id: int) -> dict:
