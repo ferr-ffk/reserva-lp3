@@ -22,9 +22,11 @@ def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
         descricao (str): A descrição geral da sala
     """
 
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     sql = f"INSERT INTO `sala` (`codigo`, `capacidade`, `tipo`, `descricao`) VALUES (\"{codigo}\", {capacidade}, \"{tipo}\", {descricao})"
+    
+    print(sql)
 
     executar_sql(conexao, sql)
 
@@ -38,7 +40,7 @@ def obter_salas() -> list:
         list: A lista de todas as salas
     """
 
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     sql = f"SELECT * FROM `sala`"
 

@@ -29,7 +29,7 @@ def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> N
         ValueError: Se uma reserva já possuir esse código
     """
     
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     data_inicio_format = converter_datetime_str_mysl(data_hora_inicio)
     data_fim_format = converter_datetime_str_mysl(data_hora_fim)
@@ -42,7 +42,7 @@ def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> N
 
 
 def obter_reservas() -> list[dict]:
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     resultado = executar_sql(conexao, "SELECT * FROM reserva")
 

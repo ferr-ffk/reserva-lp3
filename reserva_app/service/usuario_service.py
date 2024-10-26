@@ -19,7 +19,7 @@ def criar_usuario(nome: str, email: str, senha: str, admin: bool = False) -> Non
         admin (bool, optional): Se o usuário possui capacidades de administrador. Defaults to False.
     """
 
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     admin = str(admin).lower()
 
@@ -37,7 +37,7 @@ def obter_usuarios() -> list[dict]:
         list: A lista de usuários cadastrados
     """
 
-    conexao = abrir_conexao("localhost", "estudante1", "123", "teste_python")
+    conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
     resultado = executar_sql(conexao, "SELECT * FROM usuario")
 
