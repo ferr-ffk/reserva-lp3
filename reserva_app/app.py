@@ -41,8 +41,6 @@ def pagina_reservar_sala() -> None:
 
 @app.route("/reservar-sala", methods=['post'])
 def pagina_reservar_sala_post() -> None:
-    print(request.form['codigo_sala'])
-    
     criar_reserva(1, request.form['codigo_sala'], request.form['data_e_hora_de_inicio'], request.form['data_e_hora_do_fim'])
 
     return redirect(url_for(pagina_reservas.__name__))

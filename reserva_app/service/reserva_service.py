@@ -31,6 +31,10 @@ def criar_reserva(id_usuario, codigo_sala, data_hora_inicio: str, data_hora_fim:
     
     conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
     
+    # A gambiarra é a seguinte: o html tem um formato de datetime diferente do python,
+    # A solução remover a letra T (que é a razão que ele não funciona)
+    # E daí ele converte a string vinda do input para um objeto datetime
+    # E depois formata o objeto em uma string que possa ser inserida no mysql
     data_hora_inicio = data_hora_inicio.replace("T", " ")
     data_hora_fim = data_hora_fim.replace("T", " ")
 
