@@ -24,7 +24,7 @@ def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
 
     conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
-    sql = f"INSERT INTO `sala` (`codigo`, `capacidade`, `tipo`, `descricao`) VALUES (\"{codigo}\", {capacidade}, \"{tipo}\", {descricao})"
+    sql = f"INSERT INTO `sala` (`codigo_sala`, `capacidade`, `tipo`, `descricao`, `ativa`) VALUES ({codigo}, {capacidade}, \"{tipo}\", \"{descricao}\", false)"
     
     print(sql)
 
