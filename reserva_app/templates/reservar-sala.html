@@ -15,21 +15,21 @@
     <div class="col">
       <form action="/reservar-sala", method="post">
         <div class="mb-3">
-          <label for="sala" class="form-label">Sala</label>
-          <select class="form-select" id="sala" name="sala">
+          <label for="codigo_sala" class="form-label">Sala</label>
+          <select class="form-select" id="codigo_sala" name="codigo_sala">
             <option selected>Selecione a sala</option>
             {% for sala in salas %}
-              <option value="{{ sala.codigo }}">Sala {{ sala.codigo }}</option>
+              <option value="{{ sala.codigo_sala }}">Sala {{ sala.codigo_sala }} ({{ sala.descricao }})</option>
             {% endfor %}
           </select>
         </div>
         <div class="mb-3">
-          <label for="inicio" class="form-label">Data e Hora Início</label>
-          <input type="datetime-local" class="form-control" name="data_e_hora_de_inicio" id="inicio">
+          <label for="data_e_hora_de_inicio" class="form-label">Data e Hora Início</label>
+          <input type="datetime-local" class="form-control" name="data_e_hora_de_inicio" id="data_e_hora_de_inicio">
         </div>
         <div class="mb-3">
-          <label for="inicio" class="form-label">Data e Hora Fim</label>
-          <input type="datetime-local" class="form-control" name="data_e_hora_do_fim" id="inicio">
+          <label for="data_e_hora_do_fim" class="form-label">Data e Hora Fim</label>
+          <input type="datetime-local" class="form-control" name="data_e_hora_do_fim" id="data_e_hora_do_fim">
         </div>
         <button type="submit" class="btn btn-dark">Reservar</button>
       </form>

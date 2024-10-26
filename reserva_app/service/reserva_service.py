@@ -16,7 +16,7 @@ def reserva_modelo(codigo, usuario, sala, data_hora_inicio, data_hora_fim):
 
 # -------------------------------------------------------
 
-def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> None:
+def criar_reserva(id_usuario, codigo_sala, data_hora_inicio: str, data_hora_fim: str) -> None:
     """Persiste uma reserva no banco de dados
 
     Args:
@@ -30,9 +30,15 @@ def criar_reserva(id_usuario, codigo_sala, data_hora_inicio, data_hora_fim) -> N
     """
     
     conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
+    
+    data_hora_inicio = data_hora_inicio.replace("T", " ")
+    data_hora_fim = data_hora_fim.replace("T", " ")
 
-    data_inicio_format = converter_datetime_str_mysl(data_hora_inicio)
-    data_fim_format = converter_datetime_str_mysl(data_hora_fim)
+    data_inicio_format = converter_str_datetime(data_hora_inicio)
+    data_fim_format = converter_str_datetime(data_hora_fim)
+
+    data_inicio_format = converter_datetime_str_mysl(data_inicio_format)
+    data_fim_format = converter_datetime_str_mysl(data_fim_format)
 
     sql = f"INSERT INTO `reserva` (`id_usuario`, `codigo_sala`, `data_hora_inicio`, `data_hora_fim`) VALUES (\"{id_usuario}\", \"{codigo_sala}\", \"{data_inicio_format}\", \"{data_fim_format}\")"
 
