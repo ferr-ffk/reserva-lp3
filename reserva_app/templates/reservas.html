@@ -33,16 +33,22 @@
     {% for reserva in reservas %}
       <tr>
         <td>
-          {{ reserva.sala }}
+          {{ reserva.codigo_sala }}
         </span>
         <td>
-          {{ reserva.usuario }}
+          <!-- A partir da lista de usuários, obtém o nome do usuário que fez aquela reserva -->
+          {% for usuario in usuarios %}
+            {% if usuario.id_usuario == reserva.id_usuario %}
+              {% set nome_usuario = usuario.nome %}
+              {{ nome_usuario }}
+            {% endif %}
+          {% endfor %}
         </td>
         <td>
-          {{ reserva.data_e_hora_de_inicio }}
+          {{ reserva.data_hora_inicio }}
         </td>
         <td>
-          {{ reserva.data_e_hora_do_fim }}
+          {{ reserva.data_hora_fim }}
         </td>
       </tr>
     {% endfor %}

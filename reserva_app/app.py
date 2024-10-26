@@ -31,7 +31,7 @@ def pagina_cadastro() -> None:
 
 @app.route("/reservas")
 def pagina_reservas() -> None:
-    return render_template("reservas.html", reservas=obter_reservas())
+    return render_template("reservas.html", reservas=obter_reservas(), usuarios=obter_usuarios())
 
 
 @app.route("/reservar-sala")
