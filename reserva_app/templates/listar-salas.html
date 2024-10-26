@@ -27,7 +27,7 @@
           <tbody>
             {% for sala in salas %}
             <tr>
-              <td>{{ sala.codigo }}</td>
+              <td>{{ sala.codigo_sala }}</td>
               {% if sala['tipo'] == "1" %}
                 <td>Laboratório de Informática</td>
               {% elif sala['tipo'] == "2" %}
