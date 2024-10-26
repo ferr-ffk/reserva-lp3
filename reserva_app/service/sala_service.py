@@ -12,7 +12,7 @@ def sala_modelo(codigo, capacidade, tipo, descricao):
     }
 # -------------------------------------------------------
 
-def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
+def criar_sala(capacidade: int, tipo: str, descricao: str) -> None:
     """Persiste uma sala no banco de dados
 
     Args:
@@ -24,7 +24,7 @@ def criar_sala(codigo: str, capacidade: int, tipo: str, descricao: str) -> None:
 
     conexao = abrir_conexao("localhost", "root", "123456", "teste_python")
 
-    sql = f"INSERT INTO `sala` (`codigo_sala`, `capacidade`, `tipo`, `descricao`, `ativa`) VALUES ({codigo}, {capacidade}, \"{tipo}\", \"{descricao}\", false)"
+    sql = f"INSERT INTO `sala` (`capacidade`, `tipo`, `descricao`, `ativa`) VALUES ({capacidade}, \"{tipo}\", \"{descricao}\", false)"
     
     print(sql)
 

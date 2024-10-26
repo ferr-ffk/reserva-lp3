@@ -63,7 +63,7 @@ def pagina_cadastrar_sala_detalhe(id) -> None:
 
 @app.route("/cadastrar-sala", methods=['post'])
 def pagina_cadastrar_sala_post() -> None:
-    criar_sala(request.form['codigo_sala'], request.form['capacidade'], request.form['tipo'], request.form['descricao'])
+    criar_sala(request.form['capacidade'], request.form['tipo'], request.form['descricao'])
     
     return redirect(url_for(pagina_principal.__name__))
 
