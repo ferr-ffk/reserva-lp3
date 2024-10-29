@@ -2,7 +2,7 @@
 name = "reserva-app"
 version = "0.1.0"
 description = ""
-authors = ["Domingos Lucas <domingos.latorre@gmail.com>"]
+authors = ["Domingos Lucas <domingos.latorre@gmail.com>", "Fernando Freitas de Lira <freitax.li@gmail.com>", "Francine Midori"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
