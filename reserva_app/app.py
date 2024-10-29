@@ -5,12 +5,6 @@ from service.usuario_service import *
 
 app = Flask(__name__)
 
-# As reservas serão feitas e armazenadas na lista de reservas     
-reservas = obter_reservas()
-
-# As salas serão cadastradas e armazenadas na lista de salas
-salas = obter_salas()
-
 
 @app.route("/login")
 def pagina_login() -> None:
