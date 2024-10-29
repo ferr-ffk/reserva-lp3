@@ -2,6 +2,13 @@
 
 Aplicação de exemplo para aulas sobre desenvolvimento web backend e criação de multipage applications utilizand Python e Flask.
 
+## Autores
+
+| Integrante       | Funçao    |
+|------------------|-----------|
+| Fernando Freitas | Front-end |
+| Francine Midori  | Back-end  |
+
 ## Usuários vs. Funcionalidades
 - Administrador
   - Login
